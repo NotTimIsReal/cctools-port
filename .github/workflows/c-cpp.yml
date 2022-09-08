@@ -10,7 +10,7 @@ jobs:
     - name: Install dependencies
       run: sudo apt install clang llvm-dev uuid-dev
     - name: configure
-      run: CC="clang -arch arm64" CXX="clang++ -arch -arm64" ./cctools/configure --prefix=/home/runner/prebuild
+      run: CC="clang -arch arm64" CXX="clang++ -arch -arm64" ./cctools/configure --prefix=/home/runner/prebuild --target=aarch64-unknown-linux-gnu
     - name: make
       run: CC="clang -arch arm64" CXX="clang++ -arch -arm64" make -j$(nproc)
     - name: install
