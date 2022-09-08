@@ -10,9 +10,9 @@ jobs:
     - name: Install dependencies
       run: sudo apt install clang llvm-dev uuid-dev
     - name: configure
-      run: ./cctools/configure --prefix=/home/runner/prebuild
+      run: CC="clang --target=aarch64-unknown-linux-gnu" CXX="clang++ --target=aarch64-unknown-linux-gnu" ./cctools/configure --prefix=/home/runner/prebuild
     - name: make
-      run: CC="clang -target aarch64-unknown-linux-gnu" CXX="clang++ -target aarch64-unknown-linux-gnu" make -j$(nproc)
+      run: CC="clang --target=aarch64-unknown-linux-gnu" CXX="clang++ --target=aarch64-unknown-linux-gnu" make -j$(nproc)
     - name: install
       run: make install
     - name: Upload a Build Artifact
